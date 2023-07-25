@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 void constantFun()
+// constant time complexity O(1)
 {
     string universeName = "Parallel Universe";
     cout << "Hello from external universe, to " << universeName << endl;
@@ -24,7 +25,7 @@ void LinearFun(int n)
 }
 void quadraticFun(int n)
 {
-    cout << "\nLinear time complexity — O(n^2) : \n";
+    cout << "\nQuadratic time complexity — O(n^2) : \n";
 
     for (int i = 0; i < n; i++)
     { // O(n)
@@ -34,13 +35,31 @@ void quadraticFun(int n)
         }
     }
 }
+void linearTimeComplexity(int n, int m)
+// Linear time — O(n + m)
+{
+    cout << "\nLinear time complexity — O(n+m) : \n";
+
+    // Loop with 'n' iterations
+    for (int i = 0; i < n; i++)
+    {
+        cout << "Iteration: " << i << endl;
+    }
+
+    // Loop with 'm' iterations
+    for (int j = 0; j < m; j++)
+    {
+        cout << "Iteration: " << j << endl;
+    }
+}
 
 int main()
 {
-    int n = 3;
+    int n = 3, m = 4;
     constantFun();
     logarithmicFun(n);
     LinearFun(n);
     quadraticFun(n);
+    linearTimeComplexity(n, m);
     return 0;
 }
