@@ -1,16 +1,30 @@
+// Program to check whether an integer is positive, negative or zero
+
 #include <iostream>
 using namespace std;
+
 int main()
 {
-    int num;
-    cout << "Enter a integer: ";
-    cin >> num;
-    if (num > 0)
+
+    int number;
+
+    cout << "Enter an integer: ";
+    cin >> number;
+
+    if (number > 0)
     {
-        cout << "This number is positive";
+        cout << "You entered a positive integer: " << number << endl;
+    }
+    else if (number < 0)
+    {
+        cout << "You entered a negative integer: " << number << endl;
     }
     else
     {
-        cout << "This number is negative";
-    };
+        cout << "You entered 0." << endl;
+    }
+
+    cout << "This line is always printed.";
+
+    return 0;
 }
