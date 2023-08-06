@@ -10,18 +10,21 @@ int main()
 
     cout << "Enter an integer: ";
     cin >> number;
+    if (number != 0)
+    {
+        if (number > 0)
+        {
+            cout << "You entered a positive integer: " << number << endl;
+        }
+        else
+        {
+            cout << "You entered a negative integer: " << number << endl;
+        }
+    }
 
-    if (number > 0)
-    {
-        cout << "You entered a positive integer: " << number << endl;
-    }
-    else if (number < 0)
-    {
-        cout << "You entered a negative integer: " << number << endl;
-    }
     else
     {
-        cout << "You entered 0." << endl;
+        cout << "You entered a 0 that is neither postive nor negative" << endl;
     }
 
     cout << "This line is always printed.";
