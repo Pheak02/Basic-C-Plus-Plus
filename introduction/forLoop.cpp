@@ -8,23 +8,29 @@ int main()
     // {
     //     cout << i << " ";
     // }
-    //====SECOND WAY======
 
+    //====SECOND WAY======
     // for (int i; i < 5; ++i)
     // {
     //     cout << i << " ";
     // }
 
     /* =======SUM number==== */
-    int userInput;
-    int sum = 0;
-    // cout << "Enter a number: ";
-    // cin >> userInput;
-    for (int i = 0; i <= 5; i++)
+    // int userInput;
+    // int sum = 0;
+    // for (int i = 0; i <= 5; i++)
+    // {
+    //     cout << "Enter a number: ";
+    //     cin >> userInput;
+    //     sum += userInput;
+    // }
+    // cout << "The sum of your number is:" << sum;
+
+    /* RANGE BASED LOOP*/
+    int num_array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    for (int n : num_array)
     {
-        cout << "Enter a number: ";
-        cin >> userInput;
-        sum += userInput;
+        cout << n << " ";
     }
-    cout << "The sum of your number is:" << sum;
+    return 0;
 }
