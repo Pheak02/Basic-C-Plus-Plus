@@ -20,7 +20,11 @@ int powerOfNum(int base, int exponent)
 }
 int main()
 {
-    int base = 2, exponent = 3;
-    cout << "The result of power of number is: " << powerOfNum(base, exponent);
+    int base, exponent;
+    cout << "Please enter the base: ";
+    cin >> base;
+    cout << "Please enter the exponent: ";
+    cin >> exponent;
+    cout << "The result of the power of" << base << "raised to the power of" << exponent << "is" << powerOfNum(base, exponent);
     return 0;
 }
