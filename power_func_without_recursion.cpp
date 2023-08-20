@@ -20,5 +20,5 @@ int main()
     std::cin >> exponent;
 
     double result = power(base, exponent);
-    std::cout << base << "raised to the power of " << exponent << "is: " << result << std::endl;
+    std::cout << base << " raised to the power of " << exponent << " is: " << result << std::endl;
 }
