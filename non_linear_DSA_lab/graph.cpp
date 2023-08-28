@@ -1,36 +1,34 @@
-#include<iostream>
-#include<list>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Graph {
-    int V;
-    list<int> *adj;
-
+    int numVertices; // Number of vertices
+    list<int> *adjLists; // Array of linked lists to store adjacent vertices
+    
 public:
     Graph(int V) {
-        this->V = V;
-        adj = new list<int>[V];
-    }
-
-    void addEdge(int v, int w) {
-        adj[v].push_back(w);
+        numVertices = V;
+        adjLists = new list<int>[V];
     }
     
-    void printGraph(){
-        for(int i = 0; i < V; i++){
+    void addEdge(int src, int dest) {
+        adjLists[src].push_back(dest);
+        adjLists[dest].push_back(src);
+    }
+    
+    void printGraph() {
+        for (int i = 0; i < numVertices; i++) {
             cout << "Adjacency list of vertex " << i << ": ";
-            for (auto it = adj[i].begin(); it != adj[i].end(); ++it) {
-                cout << *it << " ";
-            }
+            for (auto v : adjLists[i])
+                cout << v << " ";
             cout << endl;
         }
     }
 };
 
 int main() {
-    int V = 5;
-    Graph g(V);
-
+    Graph g(5); // Create a graph with 5 vertices
+    
     g.addEdge(0, 1);
     g.addEdge(0, 4);
     g.addEdge(1, 2);
@@ -38,8 +36,8 @@ int main() {
     g.addEdge(1, 4);
     g.addEdge(2, 3);
     g.addEdge(3, 4);
-
+    
     g.printGraph();
-
+    
     return 0;
 }
