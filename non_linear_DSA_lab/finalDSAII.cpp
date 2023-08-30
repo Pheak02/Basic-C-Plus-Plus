@@ -50,14 +50,6 @@ int main() {
 
     addEdge(adj, 7, 8, 7);
 
-
-
-
-
-
-
-
-
     // Printing the graph
     printGraph(adj, V);
 
