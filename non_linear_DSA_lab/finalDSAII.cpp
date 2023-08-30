@@ -10,19 +10,51 @@ void addEdge(vector<pair<int, int>> adj[], int u, int v, int weight) {
     adj[v].push_back(make_pair(u, weight));
 }
 
-// Function to print the graph
-void printGraph(vector<pair<int, int>> adj[], int V) {
-    for(int i = 0; i < V; i++) {
-        cout << "Adjacency list of vertex " << i << endl;
-        for(auto it = adj[i].begin(); it != adj[i].end(); it++) {
-            cout << "-> " << it->first << " (weight: " << it->second << ")";
-        }
-        cout << endl;
+// Depth First Search (DFS) function to find the highest cost path
+void DFS(vector<pair<int, int>> adj[], int v, int visited[], vector<int>& path, int cost, int &maxCost, vector<int>& maxCostPath) {
+    visited[v] = 1; // Mark current vertex as visited
+    path.push_back(v); // Add current vertex to the path
+
+    // Base case: if current cost is greater than previous max cost, update max cost and max cost path
+    if (cost > maxCost) {
+        maxCost = cost;
+        maxCostPath = path;
     }
+
+    // Recursive call for all adjacent vertices of current vertex
+    for (auto it = adj[v].begin(); it != adj[v].end(); it++) {
+        int u = it->first;
+        int weight = it->second;
+        if (visited[u] == 0) {
+            DFS(adj, u, visited, path, cost + weight, maxCost, maxCostPath);
+        }
+    }
+
+    // Backtrack: remove current vertex from path and mark it as unvisited
+    path.pop_back();
+    visited[v] = 0;
+}
+
+// Function to find the path with the highest cost
+vector<int> findHighestCostPath(vector<pair<int, int>> adj[], int V) {
+    // Initialize visited array and path array
+    int visited[V] = {0};
+    vector<int> path;
+    
+    // Initialize max cost and max cost path
+    int maxCost = 0;
+    vector<int> maxCostPath;
+
+    // DFS from each vertex to find the highest cost path
+    for (int i = 0; i < V; i++) {
+        DFS(adj, i, visited, path, 0, maxCost, maxCostPath);
+    }
+
+    return maxCostPath;
 }
 
 int main() {
-    int V = 5; // Number of vertices
+    int V = 9; // Number of vertices
 
     // Array of vectors to represent the graph
     vector<pair<int, int>> adj[V];
@@ -34,7 +66,7 @@ int main() {
     addEdge(adj, 1, 7, 11);
 
     addEdge(adj, 2, 1, 8);
-    addEdge(adj, 2,8, 2);
+    addEdge(adj, 2, 8, 2);
     addEdge(adj, 2, 5, 4);
     addEdge(adj, 2, 3, 7);
 
@@ -46,12 +78,20 @@ int main() {
     addEdge(adj, 5, 6, 2);
 
     addEdge(adj, 6, 8, 6);
-    addEdge(adj, 6, 7,1);
+    addEdge(adj, 6, 7, 1);
 
     addEdge(adj, 7, 8, 7);
 
-    // Printing the graph
-    printGraph(adj, V);
+    // Find the path with the highest cost
+    vector<int> maxCostPath = findHighestCostPath(adj, V);
+
+    // Print the path with the highest cost
+    cout << "Path with highest cost: ";
+    for (int i = 0; i < maxCostPath.size(); i++) {
+        cout << maxCostPath[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
+
