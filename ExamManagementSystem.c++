@@ -163,7 +163,7 @@ int main()
             int inputDuration;
             cout << "Enter subject: ";
             cin >> inputSubject;
-            cout << "Enter date: ";
+            cout << "Enter date: ";r
             cin >> inputDate;
             cout << "Enter time: ";
             cin >> inputTime;
